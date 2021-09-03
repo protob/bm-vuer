@@ -1,4 +1,6 @@
-# Authentication with JWT, Hasura claims and multiple roles
+# SIMPLE JWT AUTH SERVER FOR HASURA. 
+### Fork of https://github.com/platyplus/authentication-server
+### Updated repo with fixed depreciation errors: https://github.com/protob/authentication-server 
 
 This is a sample auth JWT service for authenticating requests to the Hasura GraphQL Engine. This also exposes login and signup endpoints. Note that this repository can also be used in webhook mode in using the `/webhook` endpoint. The specifics of this repository is that it maps a `user_role` table to generate `x-hasura-allowed-roles` in the JWT claim so multiple roles can work with the Hasura Grapqh Engine as a backend of the application.
 

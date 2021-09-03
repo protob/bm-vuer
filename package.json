@@ -68,6 +68,6 @@
         "vite-plugin-windicss": "^1.1.0",
         "vite-ssg": "^0.11.4",
         "vue-jest": "^5.0.0-alpha.7",
-        "vue-tsc": "^0.2.0",
+        "vue-tsc": "^0.2.0"
     }
 }

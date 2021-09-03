@@ -4,7 +4,7 @@
   "engines": {
     "node": "15.14.0"
   },
-  "description": "A simple authentication service to deliver JWT with Hasura claims, based on users with multiples roles stored in a Postgres database.",
+  "description": "Simple JWT auth server for Hasura, fork of https://github.com/platyplus/authentication-server",
   "scripts": {
     "test": "echo \"TODO: no test specified\" && exit 0",
     "start": "node app.js --port 3335",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/platyplus/authentication-server"
+    "url": "git+https://github.com/protob/authentication-serverr"
   },
   "author": "Pierre-Louis Mercereau",
   "license": "MIT",

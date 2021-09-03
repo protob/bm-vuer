@@ -1,11 +1,9 @@
 .DS_Store
-.vite-ssg-dist
-.vite-ssg-temp
-*.local
-dist
-dist-ssr
 node_modules
-# intellij stuff
-.idea/
-.yarnrc
-.env
+
+packages/bm-vuer/.yarnrc*
+packages/bm-vuer/.env*
+
+*.json.lerna_backup
+.idea
+

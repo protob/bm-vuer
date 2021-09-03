@@ -1,3 +1,2 @@
-# Bookmark Vuer (WIP)
-
-Bookmarks manager built with Vue3 + Hasura 
+# bm-vuer
+(WIP) Bookmarks manager - Vue3 + Vite + Hasura + JWT auth 

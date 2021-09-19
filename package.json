@@ -2,12 +2,61 @@
   "name": "root",
   "private": true,
   "scripts": {
+    "commit": "cz",
     "bootstrap": "lerna bootstrap",
     "build:bm-vuer": "lerna run build --parallel --scope @bm-vuer/bm-vuer",
     "watch:bm-vuer": "lerna run dev --parallel --scope @bm-vuer/bm-vuer",
     "start:jwt-auth-server": "lerna run start --parallel --scope @bm-vuer/jwt-auth-server"
   },
   "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "@semantic-release/changelog": "^5.0.1",
+    "@semantic-release/commit-analyzer": "^9.0.1",
+    "@semantic-release/git": "^9.0.1",
+    "@semantic-release/npm": "^8.0.0",
+    "@semantic-release/release-notes-generator": "^10.0.2",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^7.0.2",
     "lerna": "3.21.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ],
+  "release": {
+    "prepare": [
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      {
+        "path": "@semantic-release/git",
+        "assets": [
+          "package.json",
+          "package-lock.json",
+          "CHANGELOG.md"
+        ],
+        "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+      }
+    ]
   }
+  
 }

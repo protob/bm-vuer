@@ -8,7 +8,7 @@ const defaultUserData = {
 
 }
 
-export const useUserStore = defineStore({
+export const useStoreUser = defineStore({
   id: 'user',
   state: () => ({
     authToken: null,

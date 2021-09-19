@@ -41,3 +41,12 @@ html.dark {
     hover:opacity-100 hover:text-teal-600;
   font-size: 0.9em;
 }
+
+
+
+.prt-btn {
+    --protium-button-margin:0 0.2rem;
+    --protium-button-color:black;
+    --protium-button-border: 1px solid transparent;
+
+  }

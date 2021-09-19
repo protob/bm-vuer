@@ -15,10 +15,10 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { useUserStore } from '@/stores/user'
+import { useStoreUser } from '@/stores/user'
 
 import { useStoreForms } from '@/stores/forms'
-const userStore = useUserStore()
+const userStore = useStoreUser()
 
 const storeForms = useStoreForms()
 const isLoggedIn = computed(() => {
@@ -45,8 +45,6 @@ const logout = () => {
 .prt-login-toolbar {
   .prt-btn {
     --protium-button-margin:0 0.2rem;
-    --protium-button-color:black;
-    --protium-button-border: 1px solid transparent;
 
   }
 }

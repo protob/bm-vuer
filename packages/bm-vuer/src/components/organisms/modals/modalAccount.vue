@@ -7,17 +7,14 @@
     >
       <div class="prt-heading-bar">
         <span class="prt-heading-bar__text">
-
           {{ title }}
-
         </span>
       </div>
 
       <login-form
         v-if="storeForms.getFormType == 'loginForm'"
-      ></login-form>
-      <register-form v-else>
-      </register-form>
+      />
+      <register-form v-else />
     </prt-modal>
   </div>
 </template>
@@ -29,9 +26,7 @@ const storeForms = useStoreForms()
 const { isModalAccountOpen, modalFormMeta } = toRefs(storeForms)
 
 const target = ref(null)
-
 const form = reactive({})
-
 const title = computed(() => { return storeForms.getFormType === 'loginForm' ? 'login' : 'register' })
 
 // Misc
@@ -39,10 +34,12 @@ const title = computed(() => { return storeForms.getFormType === 'loginForm' ? '
 </script>
 <style lang="postcss">
 .prt-heading-bar {
-  @apply bg-blue-600 flex justify-between px-4 pt-5 pb-4;
+  @apply bg-black flex text-center justify-between px-4 pt-5 pb-4 mb-4;
 
   &__text {
-    @apply text-white py-2 font-bold uppercase;
+    @apply  py-2 font-bold uppercase w-full;
+    color:#00ad93;
+
   }
 }
 </style>

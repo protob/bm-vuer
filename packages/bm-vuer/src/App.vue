@@ -3,7 +3,7 @@ import { useHead } from '@vueuse/head'
 
 import { useClient } from 'villus'
 import { useRouter } from 'vue-router'
-import { useUserStore } from '@/stores/user.ts'
+import { useStoreUser } from '@/stores/user.ts'
 const router = useRouter()
 
 useHead({
@@ -15,7 +15,7 @@ useClient({
   cachePolicy: 'network-only',
 })
 
-const userStore = useUserStore()
+const userStore = useStoreUser()
 
 if (typeof window !== 'undefined') {
   // TODO AUTH

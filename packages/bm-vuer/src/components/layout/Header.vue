@@ -17,12 +17,8 @@
       <div
         class="flex w-full md:w-3/4 lg:w-2/3 xxl:w-1/2 justify-center md:justify-end"
       >
-        <h1 class="text-white">
-          Filter Toolbar
-        </h1>
-        <h1 class="text-white">
-          login Toolbar
-        </h1>
+        <filterToolbar class="w-full sm:w-3/4" />
+        <loginToolbar />
       </div>
     </div>
   </header>

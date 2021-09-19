@@ -1,6 +1,9 @@
  98 lines (90 sloc) 2.22 KB
 <template>
   <div id="app" class="flex flex flex-col min-h-screen bg-gray-400">
+    <modalConfirm />
+    <modalAccount />
+    <modalForm />
     <Header />
     <main
       class="app__content flex"

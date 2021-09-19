@@ -21,7 +21,7 @@
           Filter Toolbar
         </h1>
         <h1 class="text-white">
-          loginToolbar
+          login Toolbar
         </h1>
       </div>
     </div>

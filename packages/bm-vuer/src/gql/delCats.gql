@@ -1,0 +1,25 @@
+mutation DeleteCats($id: uuid!) {
+  delete_items_cats(where: { cat_id: { _eq: $id } }) {
+    affected_rows
+    returning {
+      cat_id
+    }
+  }
+
+  delete_items(where: { cat_id: { _eq: $id } }) {
+    affected_rows
+    returning {
+      cat_id
+    }
+  }
+
+  delete_cats(where: { id: { _eq: $id } }) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+
+# EXAMPLE VARS
+# {"id":"6c299669-f746-46a2-a41d-784a24091daa"}

@@ -1,0 +1,24 @@
+query getItemsByCat($id: uuid!) {
+  cats(where: { id: { _eq: $id } }) {
+    name
+    id
+    items {
+      name
+      id
+      user_id
+      url
+      desc
+      updated_at
+      slug
+      items_tags {
+        tag {
+          id
+          name
+          slug
+        }
+      }
+    }
+  }
+}
+# EXAMPLE VARS
+# { "id": "520a2989-be3e-406e-b9c5-8ecb1c850211"}

@@ -1,0 +1,53 @@
+mutation AddItem(
+  $id: uuid!
+  $user_id: uuid!
+  $name: String!
+  $slug: String!
+  $url: String!
+  $desc: String!
+  $cat_id: uuid!
+) {
+  insert_items(
+    objects: [
+      {
+        id: $id
+        name: $name
+        slug: $slug
+        url: $url
+        desc: $desc
+        user_id: $user_id
+        cat_id: $cat_id
+      }
+    ]
+    on_conflict: {
+      constraint: items_pkey
+      update_columns: [name, url, slug, desc]
+    }
+  ) {
+    affected_rows
+    returning {
+      name
+      id
+    }
+  }
+  # insert_items_cats(
+  #   objects: { item_id: $id, cat_id: $cat_id }
+  #   on_conflict: { constraint: items_cats_pkey, update_columns: cat_id }
+  # ) {
+  #   returning {
+  #     item_id
+  #     cat_id
+  #   }
+  # }
+}
+# EXAMPLE VARS
+# {
+#      "id":"793d3b72-a118-4fe6-8dd4-00ab25f4a1bc",
+#    "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71",
+# 	"url": "https://www.prestashop.com/en",
+#    "slug":"item1updated2",
+#    "name":"item1updated2",
+#    "desc":"item1 desc updated",
+# 	"cat_id": "66261a09-4a35-4254-aaaa-6425605f87d8"
+
+# }

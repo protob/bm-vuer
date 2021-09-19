@@ -1,0 +1,26 @@
+mutation AddUser(
+  $uuid: uuid!
+  $username: String!
+  $email: String!
+  $id: String!
+  $userId: String!
+  $name: String!
+  $slug: String!
+) {
+  insert_users(
+    objects: {
+      uuid: $uuid
+      username: $username
+      email: $email
+      id: $id
+      userId: $userId
+      name: $name
+      slug: $slug
+    }
+    on_conflict: { constraint: users_pkey, update_columns: username }
+  ) {
+    returning {
+      uuid
+    }
+  }
+}

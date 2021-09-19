@@ -1,0 +1,23 @@
+mutation updateTag(
+  $name: String!
+  $slug: String!
+  $user_id: uuid!
+  $id: uuid!
+) {
+  insert_tags(
+    objects: [{ id: $id, name: $name, slug: $slug, user_id: $user_id }]
+    on_conflict: { constraint: tags_pkey, update_columns: [name, slug] }
+  ) {
+    returning {
+      id
+    }
+  }
+}
+
+# EXAMPLE VARS
+# {
+#       "id":"fd66ba0e-16d0-482c-be90-4a73304f6acd",
+#       "name":"tag3updated",
+#       "slug":"tag3updated",
+#       "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71"
+#     }

@@ -1,0 +1,7 @@
+query getCats {
+  cats(order_by: { name: asc }) {
+    id
+    name
+    slug
+  }
+}

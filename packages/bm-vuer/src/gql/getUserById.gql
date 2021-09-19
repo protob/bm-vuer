@@ -1,0 +1,10 @@
+query getUserById($id: uuid!) {
+  user(where: { id: { _eq: $id } }) {
+    id
+    username
+  }
+}
+# EXAMPLE VARS
+# {
+# "id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71"
+#  }

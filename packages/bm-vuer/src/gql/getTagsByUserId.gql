@@ -1,0 +1,15 @@
+query getTagsBySLug($user_id: uuid!, $objects: [String!]!) {
+  tags(
+    where: { _and: { user_id: { _eq: $user_id }, slug: { _in: $objects } } }
+  ) {
+    name
+    slug
+    user_id
+    id
+  }
+}
+# EXAMPLE VARS
+# {
+# "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71",
+#   "objects": ["tag1"]
+#  }

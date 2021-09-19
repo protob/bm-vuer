@@ -1,0 +1,24 @@
+# Welcome to GraphiQL
+mutation updateCat(
+  $name: String!
+  $slug: String!
+  $user_id: uuid!
+  $id: uuid!
+) {
+  insert_cats(
+    objects: [{ id: $id, name: $name, slug: $slug, user_id: $user_id }]
+    on_conflict: { constraint: cats_pkey, update_columns: [name, slug] }
+  ) {
+    returning {
+      id
+      name
+    }
+  }
+}
+# EXAMPLE VARS
+# {
+# "id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d22",
+# "name":"cat1uupdated2",
+# "slug":"cat1uupdated2",
+# "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71"
+#  }

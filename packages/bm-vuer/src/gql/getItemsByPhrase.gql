@@ -1,0 +1,30 @@
+query getItemsByPhrase($phrase: String!) {
+  items(
+    where: {
+      _or: [
+        { name: { _ilike: $phrase } }
+        { desc: { _ilike: $phrase } }
+        { url: { _like: $phrase } }
+      ]
+    }
+  ) {
+    id
+    name
+    slug
+    updated_at
+    url
+    desc
+    user {
+      id
+    }
+    items_tags {
+      tag {
+        id
+        name
+        slug
+      }
+    }
+  }
+}
+# EXAMPLE VARS
+# { "phrase": "item2"}

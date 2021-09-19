@@ -1,0 +1,26 @@
+query getAllItemsByCat {
+  cats {
+    name
+    id
+    items_cats {
+      item {
+        id
+        name
+        slug
+        desc
+        updated_at
+        url
+        user {
+          id
+        }
+        items_tags {
+          tag {
+            id
+            name
+            slug
+          }
+        }
+      }
+    }
+  }
+}

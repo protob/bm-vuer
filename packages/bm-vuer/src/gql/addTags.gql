@@ -1,0 +1,37 @@
+mutation upsertTags($objects: [tags_insert_input!]!) {
+  insert_tags(
+    objects: $objects
+    on_conflict: {
+      constraint: tags_slug_user_id_key
+      update_columns: [name, slug]
+    }
+  ) {
+    affected_rows
+    returning {
+      id
+      name
+    }
+  }
+}
+# EXAMPLE VARS
+# {"objects":[
+#    {
+#       "name":"t1",
+#       "slug":"t1",
+#      "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71"
+
+#    },
+#    {
+#       "name":"t2",
+#       "slug":"t2",
+#       "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71"
+
+#    },
+#    {
+#       "name":"t3",
+#       "slug":"t3",
+#      "user_id":"d506f8b6-c837-4c44-8fa5-c1b6de0e3d71"
+
+#    }
+# ]
+# }

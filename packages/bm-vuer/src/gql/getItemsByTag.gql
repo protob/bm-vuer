@@ -1,0 +1,29 @@
+query getItemsByTag($id: uuid!) {
+  tags(where: { id: { _eq: $id } }) {
+    name
+    slug
+    id
+    items_tags {
+      item {
+        desc
+        id
+        name
+        slug
+        url
+        desc
+        updated_at
+        id
+        items_tags {
+          tag {
+            updated_at
+            slug
+            name
+            id
+          }
+        }
+      }
+    }
+  }
+}
+# EXAMPLE VARS
+# { "id":"a5e1ef34-92c5-45b9-abea-6602d5bf2132"}

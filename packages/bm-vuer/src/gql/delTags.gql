@@ -1,0 +1,18 @@
+mutation DeleteTags($id: uuid!) {
+  delete_items_tags(where: { tag_id: { _eq: $id } }) {
+    affected_rows
+    returning {
+      tag_id
+    }
+  }
+
+  delete_tags(where: { id: { _eq: $id } }) {
+    affected_rows
+    returning {
+      id
+    }
+  }
+}
+
+# EXAMPLE VARS
+# {"id":"a5e1ef34-92c5-45b9-abea-6602d5bf2132"}

@@ -1,0 +1,66 @@
+mutation AddItemWithTags(
+  $id: uuid!
+  $user_id: uuid!
+  $name: String!
+  $slug: String!
+  $url: String!
+  $desc: String!
+  $cat_id: uuid!
+  $tags: [items_tags_insert_input!]!
+) {
+  insert_items(
+    objects: [
+      {
+        id: $id
+        name: $name
+        slug: $slug
+        url: $url
+        desc: $desc
+        user_id: $user_id
+        cat_id: $cat_id
+      }
+    ]
+
+    on_conflict: {
+      constraint: items_pkey
+      update_columns: [name, url, slug, desc]
+    }
+  ) {
+    affected_rows
+    returning {
+      name
+      id
+    }
+  }
+
+  insert_items_tags(
+    objects: $tags
+    on_conflict: { constraint: items_tags_pkey, update_columns: item_id }
+  ) {
+    returning {
+      item_id
+      tag_id
+    }
+  }
+}
+
+#EXAMPLE VARS
+# {
+#   "id": "793d3b72-a118-4fe6-8dd4-00ab25f4a1bc",
+#   "user_id": "d506f8b6-c837-4c44-8fa5-c1b6de0e3d71",
+#   "url": "https://google.com",
+#   "slug": "item1updated",
+#   "name": "item1updated",
+#   "desc": "item1 desc updated",
+#   "cat_id": "186270f5-abdf-4459-a088-d8a0a4a0d8a9",
+#   "tags": [
+#     {
+#       "item_id": "793d3b72-a118-4fe6-8dd4-00ab25f4a1bc",
+#       "tag_id": "a5e1ef34-92c5-45b9-abea-6602d5bf2132"
+#     },
+#     {
+#       "item_id": "793d3b72-a118-4fe6-8dd4-00ab25f4a1bc",
+#       "tag_id": "fd66ba0e-16d0-482c-be90-4a73304f6acd"
+#     }
+#   ]
+# }

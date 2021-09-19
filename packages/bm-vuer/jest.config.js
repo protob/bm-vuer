@@ -1,15 +1,15 @@
 
-const esModules = ['gsap',"gsap/ScrollTrigger"].join('|');
+const esModules = ['gsap', 'gsap/ScrollTrigger'].join('|')
 module.exports = {
   // https://jestjs.io/docs/en/tutorial-react-native#modulenamemapper
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/$1',
-    '^~/(.*)$': '<rootDir>/src/$1'
+    '^~/(.*)$': '<rootDir>/src/$1',
   },
   // https://jestjs.io/docs/en/configuration#transform-object-string-string
   transform: {
     '^.+\\.ts?$': 'ts-jest',
-    '.*\\.(vue)$': 'vue-jest'
+    '.*\\.(vue)$': 'vue-jest',
   },
   // https://jestjs.io/docs/en/configuration#modulefileextensions-array-string
   moduleFileExtensions: ['ts', 'js', 'vue', 'json'],
@@ -23,6 +23,6 @@ module.exports = {
     'pages/**/*.vue',
     'lib/**/*.ts',
     'plugins/**/*.ts',
-    'store/**/*.ts'
-  ]
-};
+    'store/**/*.ts',
+  ],
+}

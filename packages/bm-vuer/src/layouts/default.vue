@@ -1,9 +1,18 @@
+ 98 lines (90 sloc) 2.22 KB
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <router-view />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-25 text-sm">
-      Default Layout
-    </div>
-  </main>
+  <div id="app" class="flex flex flex-col min-h-screen bg-gray-400">
+    <Header />
+    <main
+      class="app__content flex"
+    >
+      <div class="w-full sm:w-3/8 lg:w-2/8">
+        <Sidebar />
+      </div>
+      <div class="w-full sm:w-5/8 lg:w-6/8">
+        <router-view />
+      </div>
+    </main>
+
+    <Footer class="py-6" />
+  </div>
 </template>

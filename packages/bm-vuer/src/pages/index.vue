@@ -1,46 +1,21 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-import { useRouter } from 'vue-router'
-import { useI18n } from 'vue-i18n'
-
-const name = ref('')
-
-const router = useRouter()
-const go = () => {
-  if (name.value)
-    router.push(`/hi/${encodeURIComponent(name.value)}`)
-}
-
-const { t } = useI18n()
-
-const popupMsg=(msg)=>{
-alert(msg)
-}
-
-</script>
-
 <template>
-  <div>
-    <h1 class="text-4xl text-center">VITAL</h1>
-    <graphQL></graphQL>
-    <sampleStore></sampleStore>
-    <div class="container mx-auto  pt-6">
-      <div class="flex flex-row  justify-center">
-        <div class="mr-2"> 
-        <prt-button @click="popupMsg('Hello')">Click me</prt-button>
-        </div>
+  <div class="collection">
+    <!-- <itemsListing /> -->
 
-
-    <router-link  to="/about" :title="t('button.about')">
-        <prt-button>About</prt-button>
-    </router-link>
-
-      </div>
-    </div>
+    <h1 class="font-bold text-2xl mx-auto w-full pt-2 text-center pt-20 text-wthite">
+      LOGIN
+    </h1>
   </div>
 </template>
 
+<script lang="ts">
+
+export default {
+  name: 'Collection',
+
+}
+</script>
 <route lang="yaml">
 meta:
-  layout: home
+  layout: login
 </route>

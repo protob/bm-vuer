@@ -12,18 +12,28 @@ import VueI18n from '@intlify/vite-plugin-vue-i18n'
 import Prism from 'markdown-it-prism'
 // @ts-expect-error missing types
 import LinkAttributes from 'markdown-it-link-attributes'
+// import Vql from 'vite-plugin-vue-gql'
+// const graphqlPlugin = require('vite-plugin-graphql')
+import graphql from '@rollup/plugin-graphql'
+
+// import graphqlPlugin from 'snowpack-plugin-graphql'
+
+global.fetch = require('node-fetch')
 
 export default defineConfig({
   resolve: {
     alias: {
       '~/': `${path.resolve(__dirname, 'src')}/`,
+      '@/': `${path.resolve(__dirname, 'src')}/`,
     },
   },
   plugins: [
     Vue({
       include: [/\.vue$/, /\.md$/],
     }),
-
+    graphql(),
+    // graphqlPlugin(),
+    // Vql(),
     // https://github.com/hannoeru/vite-plugin-pages
     Pages({
       extensions: ['vue', 'md'],
@@ -82,8 +92,8 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.svg', 'robots.txt', 'safari-pinned-tab.svg'],
       manifest: {
-        name: 'Vitesse',
-        short_name: 'Vitesse',
+        name: 'BM VUER',
+        short_name: 'BMV',
         theme_color: '#ffffff',
         icons: [
           {

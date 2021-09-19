@@ -1,20 +1,28 @@
 <script setup lang="ts">
 import { useHead } from '@vueuse/head'
 
-// https://github.com/vueuse/head
-// you can use this to manipulate the document head in any components,
-// they will be rendered correctly in the html results with vite-ssg
+import { useClient } from 'villus'
+import { useRouter } from 'vue-router'
+import { useUserStore } from '@/stores/user.ts'
+const router = useRouter()
+
 useHead({
-  title: 'Vital',
-  meta: [
-    { name: 'description', content: 'Vital Vite Starter' },
-  ],
+  title: 'Bookmarks Vuer',
+  meta: [{ name: 'description', content: 'Bookmarks Vuer' }],
+})
+useClient({
+  url: import.meta.env.VITE_GRAPHQL_ENDPOINT,
+  cachePolicy: 'network-only',
 })
 
-import { useClient } from 'villus';
-    useClient({
-      url: import.meta.env.VITE_GRAPHQL_ENDPOINT,
-    });
+const userStore = useUserStore()
+
+if (typeof window !== 'undefined') {
+  // TODO AUTH
+  // const authToken = null
+  // localStorage.authToken = authToken
+  // if (localStorage.authToken) router.push({ path: '/collection' })
+}
 </script>
 
 <template>

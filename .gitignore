@@ -6,4 +6,4 @@ packages/bm-vuer/.env*
 
 *.json.lerna_backup
 .idea
-
+.env

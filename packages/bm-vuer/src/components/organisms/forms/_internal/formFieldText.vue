@@ -3,7 +3,6 @@ Selected subject is wrong
 <template>
   <section>
     <PrtField :label="label" :variant="variant" :message="validation.errorMessage">
-      {{ modelValue }}
       <PrtTextinput
         v-model="computedValue"
         v-bind="$attrs"
@@ -20,8 +19,6 @@ Selected subject is wrong
 <script setup lang="ts">
 import { defineEmits, defineProps, ref, watch, toRaw, onMounted, computed } from 'vue'
 
-// const error=ref(validation.errorMessage)
-
 const props = defineProps({
   modelValue: { required: true },
   label: {
@@ -37,13 +34,12 @@ const props = defineProps({
     default: () => ({}),
   },
 })
-const msg = 'This email is invalid'
+
 const variant = computed(() => (props.validation.errorMessage ? 'danger' : ''))
 
 let newValue = props.modelValue
 
 const emit = defineEmits(['update:modelValue'])
-
 const update = (value) => {
   emit('update:modelValue', value)
 }

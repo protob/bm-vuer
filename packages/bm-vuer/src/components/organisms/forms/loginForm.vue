@@ -12,7 +12,6 @@
         </div>
       </template>
     </SchemaFormWithValidation>
-
     <div class="text-black">
       {{ formData }}
     </div>
@@ -21,7 +20,6 @@
 
 <script lang="ts">
 import { ref, toRaw } from 'vue'
-
 import { SchemaFormFactory, useSchemaForm } from 'formvuelate'
 import VeeValidatePlugin from '@formvuelate/plugin-vee-validate'
 
@@ -45,13 +43,11 @@ export default {
   components: { SchemaFormWithValidation: factory },
   setup() {
     const router = useRouter()
-
     const storeForms = useStoreForms()
     const schema = {
-
-      email: {
+      username: {
         component: formField,
-        label: 'email',
+        label: 'user',
         validations: 'required',
       },
       password: {
@@ -75,7 +71,7 @@ export default {
           'Access-Control-Allow-Origin': '*',
         },
         body: JSON.stringify({
-          username: toRaw(formData.value).email,
+          username: toRaw(formData.value).username,
           password: toRaw(formData.value).password,
         }),
       })

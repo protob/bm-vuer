@@ -31,7 +31,7 @@
       <PrtButton
         class="ml-2  bg-gray-600"
         variant="danger"
-        @click="toggleDeleteTxModal(tax, itemTx.id, itemTx.name)"
+        @click="openModalConfirm(tax, itemTx.id, itemTx.name)"
       >
         {{ tax }}
 
@@ -77,7 +77,7 @@ const filterItemsByTx = (id, name, tax) => {
     : store.filterItemsByTag(id, name)
 }
 
-const toggleDeleteTxModal = (targetTx, taxId, name) => {
+const openModalConfirm = (targetTx, taxId, name) => {
   storeForms.openModalConfirm(targetTx, taxId, name)
 }
 const openModalTx = (targetTax, taxId, name, isEditing = true) => {

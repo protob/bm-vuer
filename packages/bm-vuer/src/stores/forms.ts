@@ -45,6 +45,39 @@ export const useStoreForms = defineStore({
     isModalAccountOpen: false,
   }),
   actions: {
+
+    openModalTx(targetTax, taxId, name, isEditing) {
+      this.formType = 'taxForm'
+      this.isModalOpen = true
+      this.modalFormMetaTx.isEditing = isEditing
+      this.modalFormMetaTx.targetTax = targetTax
+      this.modalFormMetaTx.taxId = taxId
+      this.modalFormDataTx.name = name
+    },
+
+    openModal(target, item_id, item, cat_id, isEditing) {
+      this.formType = 'itemForm'
+      this.isModalOpen = true
+      this.modalFormMeta.isEditing = isEditing
+      this.modalFormMeta.target = target
+      this.modalFormMeta.id = item_id
+      this.modalFormMeta.cat_id = cat_id
+
+      if (item) { // skip for adding new item
+        this.modalFormData.name = item.name
+        this.modalFormData.slug = item.slug
+        this.modalFormData.url = item.url
+        this.modalFormData.desc = item.desc
+        this.modalFormData.tags = item.items_tags
+      }
+    },
+    openModalConfirm(targetType, targetId, name) {
+      this.isModalConfirmOpen = true
+      this.modalConfirmData.targetType = targetType
+      this.modalConfirmData.targetId = targetId
+      this.modalConfirmData.name = name
+    },
+
     openModalAccount(targetAction) {
       this.formType = (targetAction === 'login')
         ? 'loginForm'
@@ -57,6 +90,13 @@ export const useStoreForms = defineStore({
       this.isModalAccountOpen = false
     },
 
+    closeModalConfirm() {
+      this.isModalConfirmOpen = false
+    },
+
+    closeModal() {
+      this.isModalOpen = !this.isModalOpen
+    }
   },
 
   getters: {
@@ -65,6 +105,24 @@ export const useStoreForms = defineStore({
     },
     getFormMode: (state) => {
       return state.formMode
+    },
+    getModalConfirmData: (state) => {
+      return state.modalConfirmData
+    },
+    getModalFormData: (state) => {
+      return state.modalFormData
+    },
+
+    getModalFormMeta: (state) => {
+      return state.modalFormMeta
+    },
+
+    getModalFormDataTx: (state) => {
+      return state.modalFormDataTx
+    },
+
+    getModalFormMetaTx: (state) => {
+      return state.modalFormMetaTx
     },
 
   },

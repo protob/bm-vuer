@@ -1,32 +1,26 @@
-
+/* eslint-disable indent */
 export default function useDelete() {
-  const prepareDeleteItemsTagsQuery = (arr) => {
+  const prepareDeleteItemsTagsQuery = (arr) => {};
+  const generateItemTagMap = async (itemData) => {};
 
-  }
-  const generateItemTagMap = async(itemData) => {
+  const deleteCatWithAllItems = async (itemData) => {};
 
-  }
+  const deleteCatTagsAndCat = async (itemData, itemsIds) => {};
+  const deleteSingleCat = async (itemData) => {};
+  const deleteCatItems = async (txItemTagsMap, itemData) => {};
 
-  const deleteCatWithAllItems = async(itemData) => {
+  const deleteSingleTag = async (id) => {};
+  const deleteSingleItem = async (id) => {};
 
-  }
-
-  const deleteCatTagsAndCat = async(itemData, itemsIds) => {
-
-  }
-  const deleteSingleCat = async(itemData) => {
-
-  }
-  const deleteCatItems = async(txItemTagsMap, itemData) => {
-
-  }
-
-  const deleteSingleTag = async(id) => {
-
-  }
-  const deleteSingleItem = async(id) => {
-
-  }
-
-  return { prepareDeleteItemsTagsQuery, generateItemTagMap, deleteCatWithAllItems, deleteCatTagsAndCat, deleteCatItems, deleteSingleCat, deleteSingleTag, deleteSingleItem, deleteItem }
+  return {
+    prepareDeleteItemsTagsQuery,
+    generateItemTagMap,
+    deleteCatWithAllItems,
+    deleteCatTagsAndCat,
+    deleteCatItems,
+    deleteSingleCat,
+    deleteSingleTag,
+    deleteSingleItem,
+    deleteItem,
+  };
 }

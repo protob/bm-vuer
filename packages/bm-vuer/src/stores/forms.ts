@@ -1,10 +1,35 @@
 
 import { defineStore } from 'pinia'
 import { toRaw, ref } from 'vue'
+
+import useCreate from '@/composables/useCreate'
+import useUpdate from '@/composables/useUpdate'
+import useDelete from '@/composables/useDelete'
+const {
+  addCollectionItemAndMaybeTags,
+  addTaxonomyItem,
+} = useCreate()
+const {
+  updateTaxonomyItem,
+  updateCollectionItem,
+} = useUpdate()
+
+const {
+  deleteSingleItem,
+  deleteCatWithAllItems,
+  deleteSingleTag,
+} = useDelete()
+
+// TODO FIX USERID
+
+let userId
+if (typeof window !== 'undefined')
+  userId = localStorage.userId ? localStorage.userId : null
+
 export const useStoreForms = defineStore({
   id: 'forms',
   state: () => ({
-    currentUserId: null,
+    currentUserId: userId,
     formMode: 'login', // login/regiser
     formType: '',
 
@@ -45,7 +70,34 @@ export const useStoreForms = defineStore({
     isModalAccountOpen: false,
   }),
   actions: {
-
+    CRUDHandler(data, isDeleting = false) {
+      if (isDeleting) {
+        const { dataObj } = data
+        const id = dataObj.targetId
+        // COLLECTION ITEMS / TAXONOMY ITEMS
+        return dataObj.targetType === 'item'
+          ? deleteSingleItem(id)
+          : dataObj.targetType === 'cat'
+            ? deleteCatWithAllItems(dataObj)
+            : deleteSingleTag(id)
+      }
+      else {
+        const { dataObj, formId, isEditing } = data
+        // item form
+        if (formId === 'itemForm') {
+          isEditing
+            ? updateCollectionItem(dataObj, userId)
+            : addCollectionItemAndMaybeTags(dataObj, userId)
+        }
+        else {
+        // cat from
+          const tax = formId === 'catForm' ? 'cat' : 'tag'
+          isEditing
+            ? updateTaxonomyItem(dataObj, tax, userId)
+            : addTaxonomyItem(dataObj, tax, userId)
+        }
+      }
+    },
     openModalTx(targetTax, taxId, name, isEditing) {
       this.formType = 'taxForm'
       this.isModalOpen = true

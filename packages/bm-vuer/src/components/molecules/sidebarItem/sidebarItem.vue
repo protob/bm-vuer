@@ -33,10 +33,7 @@
         variant="danger"
         @click="openModalConfirm(tax, itemTx.id, itemTx.name)"
       >
-        {{ tax }}
-
         <prt-icon
-
           class="text-white"
           pack="fas"
           size="small"

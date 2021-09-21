@@ -9,7 +9,7 @@
         </div>
       </template>
     </SchemaFormWithValidation>
-    {{ formData }} 
+    {{ formData }}
   </div>
 </template>
 
@@ -24,11 +24,11 @@ import { useStoreForms } from "@/stores/forms";
 import useUtils from "@/composables/useUtils";
 import { useStoreItems } from "@/stores/items";
 import formField from "./_internal/formFieldText.vue";
-
+import formFieldTextArea from "./_internal/formFieldTextArea.vue";
 const itemsDB = useStoreItems();
 
 markRaw(formField);
-
+markRaw(formFieldTextArea);
 const schema = {
   name: {
     component: formField,
@@ -42,7 +42,7 @@ const schema = {
   },
 
   desc: {
-    component: formField,
+    component: formFieldTextArea,
     label: "desc",
     rules: "required",
   },
@@ -55,7 +55,7 @@ const schema = {
 };
 // Declare FormText and FormSelect as local components
 const SchemaFormWithValidation = SchemaFormFactory([VeeValidatePlugin({})], {
-  formField,
+  formField,formFieldTextArea,
 });
 
 // COMPOSABLES
@@ -114,8 +114,8 @@ const setData = () => {
     formData.value.cat_id = cat_id;
     emit("updateEditFlag", false, "item");
   }
-};
-setData();
+}
+setData()
 
 const submitForm = async () => {
   const { id, name, url, desc, tags, cat_id } = formData.value;
@@ -138,7 +138,7 @@ const submitForm = async () => {
   setTimeout(() => {
     itemsDB.getItems();
   }, 3000);
-  storeForms.toggleModal();
+  storeForms.closeModal();
   resetData();
   success.value = true;
 };

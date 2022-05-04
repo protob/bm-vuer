@@ -5,7 +5,7 @@
       <div class="scrollbar-content">
         <sidebarItem
           v-for="item in store.tagsDB"
-          :key="item.uuid"
+          :key="item.id"
           :item-tx="item"
           :tax="'tag'"
         />
@@ -18,7 +18,6 @@ import { useStoreTx } from "@/stores/taxonomies";
 import { ref, onMounted, computed } from "vue";
 const store = useStoreTx();
 const isLoading = ref(true);
-
 onMounted(() => {
   store.getTags();
 });

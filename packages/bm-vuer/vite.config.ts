@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import Pages from 'vite-plugin-pages'
 import Layouts from 'vite-plugin-vue-layouts'
-import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
+// import ViteIcons, { ViteIconsResolver } from 'vite-plugin-icons'
 import ViteComponents from 'vite-plugin-components'
 import Markdown from 'vite-plugin-md'
 import WindiCSS from 'vite-plugin-windicss'
@@ -18,7 +18,7 @@ import graphql from '@rollup/plugin-graphql'
 
 // import graphqlPlugin from 'snowpack-plugin-graphql'
 
-global.fetch = require('node-fetch')
+// global.fetch = require('node-fetch')
 
 export default defineConfig({
   resolve: {
@@ -72,15 +72,15 @@ export default defineConfig({
       // auto import icons
       customComponentResolvers: [
         // https://github.com/antfu/vite-plugin-icons
-        ViteIconsResolver({
-          componentPrefix: '',
-          // enabledCollections: ['carbon']
-        }),
+        // ViteIconsResolver({
+        //   componentPrefix: '',
+        //   // enabledCollections: ['carbon']
+        // }),
       ],
     }),
 
     // https://github.com/antfu/vite-plugin-icons
-    ViteIcons(),
+    // ViteIcons(),
 
     // https://github.com/antfu/vite-plugin-windicss
     WindiCSS({

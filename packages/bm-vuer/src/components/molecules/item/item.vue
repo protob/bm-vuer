@@ -50,7 +50,7 @@ const props = defineProps({
   },
 
   catId: {
-    type: String,
+    type: [String , Number],
     required: true,
     default: null,
   },

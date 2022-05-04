@@ -4,7 +4,7 @@
     <div class="prt-items-listing__items">
       <itemCatCollection
         v-for="item in itemsDB"
-        :key="item.uuid"
+        :key="item.id"
         :collection-item="item"
       />
     </div>

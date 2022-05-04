@@ -5,7 +5,7 @@
       <div class="scrollbar-content">
         <sidebarItem
           v-for="item in store.catsDB"
-          :key="item.uuid"
+          :key="item.id"
           :item-tx="item"
           :tax="'cat'"
         />
